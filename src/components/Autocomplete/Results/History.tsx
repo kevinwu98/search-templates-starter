@@ -2,6 +2,7 @@ import { useNostoAppState } from "@nosto/search-js/preact/hooks"
 import HistoryItem from "../Item/HistoryItem"
 import Heading from "@/elements/Heading/Heading"
 import styles from "./History.module.css"
+import { texts } from "@/config"
 
 export default function History() {
   const historyItems = useNostoAppState(state => state.historyItems)
@@ -12,7 +13,7 @@ export default function History() {
 
   return (
     <div className={styles.historyColumn}>
-      <Heading>Recent searches</Heading>
+      <Heading>{texts.recentSearches}</Heading>
       {historyItems.map(item => (
         <HistoryItem key={item} item={item} />
       ))}

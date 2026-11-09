@@ -4,6 +4,7 @@ import { JSX } from "preact/jsx-runtime"
 import styles from "./Pagination.module.css"
 import { getPageUrl } from "@/mapping/url/getPageUrl"
 import { cl } from "@nosto/search-js/utils"
+import { texts } from "@/config"
 
 type Props = {
   ariaLabel?: string
@@ -39,7 +40,7 @@ export default function Pagination() {
     <ul className={styles.container}>
       {prev && (
         <li>
-          <PageLink {...pageLinkProps(prev)} ariaLabel="Previous page">
+          <PageLink {...pageLinkProps(prev)} ariaLabel={texts.previousPage}>
             <Icon name="arrow-left" />
           </PageLink>
         </li>
@@ -48,7 +49,7 @@ export default function Pagination() {
       {first && (
         <>
           <li>
-            <PageLink {...pageLinkProps(first)} ariaLabel="First page">
+            <PageLink {...pageLinkProps(first)} ariaLabel={texts.firstPage}>
               {first.page}
             </PageLink>
           </li>
@@ -60,7 +61,7 @@ export default function Pagination() {
 
       {pages.map(page => (
         <li key={page.page} className={cl(page.current && styles.active)}>
-          <PageLink ariaLabel={`${page.page} page`} {...pageLinkProps(page)}>
+          <PageLink ariaLabel={texts.page(page.page)} {...pageLinkProps(page)}>
             {page.page}
           </PageLink>
         </li>
@@ -72,7 +73,7 @@ export default function Pagination() {
             <span className={styles.filler}>...</span>
           </li>
           <li>
-            <PageLink {...pageLinkProps(last)} ariaLabel="Last page">
+            <PageLink {...pageLinkProps(last)} ariaLabel={texts.lastPage}>
               {last.page}
             </PageLink>
           </li>
@@ -81,7 +82,7 @@ export default function Pagination() {
 
       {next && (
         <li>
-          <PageLink {...pageLinkProps(next)} ariaLabel="Next page">
+          <PageLink {...pageLinkProps(next)} ariaLabel={texts.nextPage}>
             <Icon name="arrow-right" />
           </PageLink>
         </li>

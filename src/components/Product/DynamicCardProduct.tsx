@@ -4,6 +4,7 @@ import styles from "./Product.module.css"
 import skeleton from "./skeleton.module.css"
 import DynamicCard from "@/elements/DynamicCard/DynamicCard"
 import { cl } from "@nosto/search-js/utils"
+import { texts } from "@/config"
 
 /**
  * Renders a Shopify dynamic-card product search result. Keep the SerpElement wrapper in place so Nosto search analytics can track product clicks.
@@ -13,7 +14,7 @@ export default function DynamicCardProduct({ product }: { product: Product }) {
 
   if (isSkeleton) {
     return (
-      <div className={cl(styles.container, skeleton.skeleton)} aria-label={`Product ${product.name}`}>
+      <div className={cl(styles.container, skeleton.skeleton)} aria-label={texts.product(product.name)}>
         <div className={styles.image}>
           <img src={product.imageUrl} alt={product.name} className={styles.img} />
         </div>

@@ -2,6 +2,7 @@ import { SearchCategories } from "@nosto/nosto-js/client"
 import Heading from "@/elements/Heading/Heading"
 import Category from "../Item/Category"
 import styles from "./Results.module.css"
+import { texts } from "@/config"
 
 export type CategoriesProps = {
   categories: SearchCategories
@@ -14,7 +15,7 @@ export default function Categories({ categories }: CategoriesProps) {
 
   return (
     <div className={styles.suggestionsColumn}>
-      <Heading>Categories</Heading>
+      <Heading>{texts.categories}</Heading>
       <div className={styles.keywords}>
         {categories.hits.map((category, index) => (
           <Category category={category} key={index} />

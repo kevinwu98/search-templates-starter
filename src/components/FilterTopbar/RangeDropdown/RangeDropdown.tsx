@@ -5,6 +5,7 @@ import FilterTrigger from "../FilterTrigger/FilterTrigger"
 import RangeInput from "@/elements/RangeInput/RangeInput"
 import Button from "@/elements/Button/Button"
 import styles from "./RangeDropdown.module.css"
+import { texts } from "@/config"
 
 type Props = {
   facet: SearchStatsFacet
@@ -70,7 +71,7 @@ export default function RangeDropdown({ facet }: Props) {
         isOpen={isOpen}
         onClick={toggleDropdown}
         onKeyDown={handleKeyDown}
-        ariaLabel={`Filter by ${facet.name}`}
+        ariaLabel={texts.filterBy(facet.name)}
       />
 
       {isOpen && (
@@ -82,10 +83,10 @@ export default function RangeDropdown({ facet }: Props) {
                 value={localMin}
                 min={min}
                 max={max}
-                placeholder="From"
+                placeholder={texts.rangeFrom}
                 onChange={e => setLocalMin(Number(e.currentTarget.value))}
                 className={styles.input}
-                aria-label={`Minimum ${facet.name}`}
+                aria-label={texts.minimum(facet.name)}
               />
             </div>
             <div className={styles.inputGroup}>
@@ -94,15 +95,15 @@ export default function RangeDropdown({ facet }: Props) {
                 value={localMax}
                 min={min}
                 max={max}
-                placeholder="To"
+                placeholder={texts.rangeTo}
                 onChange={e => setLocalMax(Number(e.currentTarget.value))}
                 className={styles.input}
-                aria-label={`Maximum ${facet.name}`}
+                aria-label={texts.maximum(facet.name)}
               />
             </div>
           </div>
           <div className={styles.actions}>
-            <Button onClick={applyFilter}>Apply</Button>
+            <Button onClick={applyFilter}>{texts.apply}</Button>
           </div>
         </div>
       )}

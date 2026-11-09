@@ -7,6 +7,7 @@ import { renderRatingStars } from "./renderRatingStars"
 import ProductImage from "./ProductImage"
 import QuickAdd from "../QuickAdd/QuickAdd"
 import { useMemo } from "preact/hooks"
+import { texts } from "@/config"
 
 type Props = {
   product: Product
@@ -34,7 +35,7 @@ export default function Product({ product, children, showAltOnHover = true }: Pr
         url: product.url
       }}
       componentProps={{
-        "aria-label": `Product ${product.name}`,
+        "aria-label": texts.product(product.name),
         className: cl(styles.container, hasAlternateImage && styles.altContainer, isSkeleton && skeleton.skeleton),
         href: product.url
       }}
@@ -44,23 +45,23 @@ export default function Product({ product, children, showAltOnHover = true }: Pr
         {hasAlternateImage && (
           <ProductImage src={product.alternateImageUrls![0]} alt={product.name} className={styles.img} />
         )}
-        {isNew && !isOnSale && <div className={styles.newRibbon}>New</div>}
-        {isOnSale && <div className={styles.saleRibbon}>Sale</div>}
+        {isNew && !isOnSale && <div className={styles.newRibbon}>{texts.newRibbon}</div>}
+        {isOnSale && <div className={styles.saleRibbon}>{texts.saleRibbon}</div>}
         <QuickAdd product={product} className={styles.quickAdd}>
-          Add to cart
+          {texts.addToCart}
         </QuickAdd>
       </div>
       <div className={styles.info} data-nosto-element="product">
         {product.brand && <div className={skeleton.text}>{product.brand}</div>}
         <div className={skeleton.text}>{product.name}</div>
-        <div className={skeleton.text} aria-label="Price">
+        <div className={skeleton.text} aria-label={texts.price}>
           <span>{product.priceText}</span>
           {isOnSale && <span className={styles.specialPrice}>{product.listPriceText}</span>}
         </div>
         {product.ratingValue !== undefined && product.reviewCount ? (
           <div
             className={skeleton.text}
-            aria-label={`${product.ratingValue} out of 5 stars, ${product.reviewCount} reviews`}
+            aria-label={texts.rating({ rating: product.ratingValue, reviews: product.reviewCount })}
           >
             {renderRatingStars(product.ratingValue)} {product.ratingValue}
           </div>

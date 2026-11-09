@@ -22,6 +22,52 @@ export const sortOptions = [
 ]
 
 /**
+ * Shopper-facing text, e.g. to translate the template. Sort option labels are set in `sortOptions`.
+ */
+export const texts = {
+  search: "Search",
+  seeAllResults: "See all search results",
+  popularSearches: "Popular searches",
+  suggestions: "Suggestions",
+  recentSearches: "Recent searches",
+  products: "Products",
+  categories: "Categories",
+  startVoiceSearch: "Start voice search",
+  stopVoiceSearch: "Stop voice search",
+  product: (name?: string) => `Product ${name}`,
+  category: (name?: string) => `Category ${name}`,
+  noResults: (query = "") => `No results found for '${query}'`,
+  itemsRange: ({ from, to, total }: { from: number; to: number; total: number }) => `${from} - ${to} of ${total} items`,
+  sortBy: "Sort by",
+  itemsPerPage: "Items per page",
+  itemsPerPageOption: (size: number) => `${size} items per page`,
+  previousPage: "Previous page",
+  nextPage: "Next page",
+  firstPage: "First page",
+  lastPage: "Last page",
+  page: (page: number) => `${page} page`,
+  newRibbon: "New",
+  saleRibbon: "Sale",
+  addToCart: "Add to cart",
+  price: "Price",
+  rating: ({ rating, reviews }: { rating: number; reviews: number }) => `${rating} out of 5 stars, ${reviews} reviews`,
+  filter: "Filter",
+  filters: "Filters",
+  filterBy: (facet: string) => `Filter by ${facet}`,
+  clearFilters: "Clear Filters",
+  clearAllFilters: "Clear all filters",
+  rangeFrom: "From",
+  rangeTo: "To",
+  apply: "Apply",
+  minimum: (facet: string) => `Minimum ${facet}`,
+  maximum: (facet: string) => `Maximum ${facet}`,
+  toggleFacet: (facet: string, expanded: boolean) => `${expanded ? "Collapse" : "Expand"} ${facet}`,
+  toggleRangeFilter: (facet: string, expanded: boolean) => `${expanded ? "Collapse" : "Expand"} ${facet} range filter`,
+  toggleRangeSelector: (facet: string, expanded: boolean) =>
+    `${expanded ? "Collapse" : "Expand"} ${facet} range selector`
+}
+
+/**
  * Enable or disable infinite scroll for search results
  */
 export const infiniteScroll = false

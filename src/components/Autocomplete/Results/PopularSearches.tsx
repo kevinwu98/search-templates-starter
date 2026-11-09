@@ -2,6 +2,7 @@ import { SearchPopularSearches } from "@nosto/nosto-js/client"
 import Heading from "@/elements/Heading/Heading"
 import styles from "./Results.module.css"
 import PopularSearch from "../Item/PopularSearch"
+import { texts } from "@/config"
 
 export type SearchesProps = {
   searches: SearchPopularSearches
@@ -14,7 +15,7 @@ export default function PopularSearches({ searches }: SearchesProps) {
 
   return (
     <div className={styles.suggestionsColumn}>
-      <Heading>Popular searches</Heading>
+      <Heading>{texts.popularSearches}</Heading>
       <div className={styles.keywords}>
         {searches.hits.map(search => (
           <PopularSearch key={search.query} search={search} />

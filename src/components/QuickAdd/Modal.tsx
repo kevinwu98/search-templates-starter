@@ -8,6 +8,7 @@ import Icon from "@/elements/Icon/Icon"
 import Heading from "@/elements/Heading/Heading"
 import ProductImage from "../Product/ProductImage"
 import SimpleSelector from "./SimpleSelector"
+import { texts } from "@/config"
 
 type Props = {
   product: Product
@@ -96,7 +97,7 @@ export default function Modal({ product, show, onClose, onAddToCart }: Props) {
           </div>
           <div className={styles.rightColumn}>
             <Heading>{product.name}</Heading>
-            <div aria-label="Price">
+            <div aria-label={texts.price}>
               <span>{data.priceText}</span>
               {product.listPrice && product.price && product.listPrice > product.price && (
                 <span className={styles.listPrice}>{data.listPriceText}</span>
@@ -107,7 +108,7 @@ export default function Modal({ product, show, onClose, onAddToCart }: Props) {
             ) : null}
             <div className={styles.description}>{product.description}</div>
             <button className={styles.addToCartButton} onClick={handleAddToCart} disabled={!selectedSkuId}>
-              Add to Cart
+              {texts.addToCart}
             </button>
           </div>
         </div>

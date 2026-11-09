@@ -1,6 +1,7 @@
 import Button from "@/elements/Button/Button"
 import { speechToTextSupported, useSpeechToText } from "@nosto/search-js/preact/hooks"
 import { useOnSubmit } from "../OnSubmitContext"
+import { texts } from "@/config"
 
 export default function SpeechToTextButton() {
   const onSubmit = useOnSubmit()
@@ -15,7 +16,7 @@ export default function SpeechToTextButton() {
 
   return (
     <Button
-      aria-label={listening ? "Stop voice search" : "Start voice search"}
+      aria-label={listening ? texts.stopVoiceSearch : texts.startVoiceSearch}
       onClick={() => {
         if (listening) {
           stopListening()

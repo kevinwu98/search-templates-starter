@@ -4,6 +4,7 @@ import FilterTrigger from "../FilterTrigger/FilterTrigger"
 import Checkbox from "@/elements/Checkbox/Checkbox"
 import { useOptimisticFacet } from "@/hooks/useOptimisticFacet"
 import styles from "./TermsDropdown.module.css"
+import { texts } from "@/config"
 
 type Props = {
   facet: SearchTermsFacet
@@ -51,7 +52,7 @@ export default function TermsDropdown({ facet }: Props) {
         isOpen={isOpen}
         onClick={toggleDropdown}
         onKeyDown={handleKeyDown}
-        ariaLabel={`Filter by ${facet.name}`}
+        ariaLabel={texts.filterBy(facet.name)}
       />
 
       {isOpen && (

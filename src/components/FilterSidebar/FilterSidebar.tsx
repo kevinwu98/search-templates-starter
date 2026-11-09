@@ -11,6 +11,7 @@ import SelectedFilters from "../SelectedFilters/SelectedFilters"
 import ClearFiltersButton from "./ClearFiltersButton/ClearFiltersButton"
 import Heading from "@/elements/Heading/Heading"
 import { useCallback, useEffect, useRef } from "preact/hooks"
+import { texts } from "@/config"
 
 type ToggleProps = {
   className?: string
@@ -64,7 +65,7 @@ export default function FilterSidebar() {
     <dialog ref={dialogRef} className={styles.dialog} onClose={handleClose} onClick={handleBackdropClick}>
       <div className={styles.content}>
         <div className={styles.header}>
-          <Heading>Filters</Heading>
+          <Heading>{texts.filters}</Heading>
           <ToggleSidebarButton onClick={() => setOpen(false)} />
         </div>
         <SelectedFilters />

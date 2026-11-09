@@ -1,5 +1,5 @@
 import { useSelectedFiltersCount, useSort, useSizeOptions } from "@nosto/search-js/preact/hooks"
-import { sortOptions, defaultSize, sizes } from "@/config"
+import { sortOptions, defaultSize, sizes, texts } from "@/config"
 import Select from "@/elements/Select/Select"
 import styles from "./Toolbar.module.css"
 import Button from "@/elements/Button/Button"
@@ -17,7 +17,7 @@ function ToggleFilterSidebarButton({ selectedFiltersCount, className }: Props) {
   return (
     <Button light className={cl(styles.filter, className)} onClick={toggle}>
       <div className={styles.label}>
-        <span>Filter</span>
+        <span>{texts.filter}</span>
       </div>
       {selectedFiltersCount > 0 && <span className={styles.badge}>{selectedFiltersCount}</span>}
     </Button>
@@ -38,14 +38,14 @@ export default function Toolbar() {
       </div>
       <div className={styles.rightSide}>
         <span className={styles.total} data-nosto-element="totalResults">
-          {from} - {total < to ? total : to} of {total} items
+          {texts.itemsRange({ from, to: total < to ? total : to, total })}
         </span>
         <Select
           value={activeSort}
           onChange={e => setSort((e.target as HTMLSelectElement)?.value)}
           className={styles.sortMenu}
           options={options}
-          label={"Sort by"}
+          label={texts.sortBy}
         />
       </div>
     </div>

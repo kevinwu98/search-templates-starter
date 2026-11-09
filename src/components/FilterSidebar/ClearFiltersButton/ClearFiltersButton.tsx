@@ -2,6 +2,7 @@ import { useCallback } from "preact/hooks"
 import { useProductFilters } from "@nosto/search-js/preact/hooks"
 import { useFilterSidebar } from "@/contexts/SidebarContext"
 import Button from "@/elements/Button/Button"
+import { texts } from "@/config"
 
 export default function ClearFiltersButton() {
   const { filters, removeAll } = useProductFilters()
@@ -25,10 +26,10 @@ export default function ClearFiltersButton() {
           handleClearFilters()
         }
       }}
-      aria-label="Clear all filters"
+      aria-label={texts.clearAllFilters}
       type="button"
     >
-      Clear Filters
+      {texts.clearFilters}
     </Button>
   )
 }

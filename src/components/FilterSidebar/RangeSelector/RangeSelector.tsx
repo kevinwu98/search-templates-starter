@@ -5,6 +5,7 @@ import { SearchStatsFacet } from "@nosto/nosto-js/client"
 import { useRangeSelector } from "@nosto/search-js/preact/hooks"
 import styles from "./RangeSelector.module.css"
 import { cl } from "@nosto/search-js/utils"
+import { texts } from "@/config"
 
 type Props = {
   /** The stats facet to display range options for */
@@ -40,7 +41,7 @@ export default function RangeSelector({ facet, rangeSize = 100, defaultActive = 
         }}
         aria-controls={`${facet.id}-range-menu`}
         aria-expanded={active}
-        aria-label={`${active ? "Collapse" : "Expand"} ${facet.name} range selector`}
+        aria-label={texts.toggleRangeSelector(facet.name, active)}
         type="button"
       >
         <span className={styles.title}>{facet.name}</span>

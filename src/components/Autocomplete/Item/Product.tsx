@@ -1,6 +1,7 @@
 import { AutocompleteElement } from "@nosto/search-js/preact/autocomplete"
 import styles from "./Product.module.css"
 import type { Product } from "@/types"
+import { texts } from "@/config"
 
 type Props = {
   hit: Product
@@ -19,7 +20,7 @@ export default function Product({ hit }: Props) {
       }}
       as="a"
       componentProps={{
-        "aria-label": `Product ${hit.name}`,
+        "aria-label": texts.product(hit.name),
         className: styles.container,
         href: hit.url
       }}

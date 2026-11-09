@@ -5,6 +5,7 @@ import Icon from "@/elements/Icon/Icon"
 import { SearchStatsFacet } from "@nosto/nosto-js/client"
 import styles from "./RangeFacet.module.css"
 import { cl } from "@nosto/search-js/utils"
+import { texts } from "@/config"
 
 type Props = {
   facet: SearchStatsFacet
@@ -36,7 +37,7 @@ export default function RangeFacet({ facet, defaultActive = false }: Props) {
         }}
         aria-controls={`${facet.id}-range-menu`}
         aria-expanded={active}
-        aria-label={`${active ? "Collapse" : "Expand"} ${facet.name} range filter`}
+        aria-label={texts.toggleRangeFilter(facet.name, active)}
         type="button"
       >
         <span className={styles.title}>{facet.name}</span>

@@ -3,6 +3,7 @@ import { SearchTermsFacet } from "@nosto/nosto-js/client"
 import Pill from "@/elements/Pill/Pill"
 import { useOptimisticFacet } from "@/hooks/useOptimisticFacet"
 import styles from "./TermsFacet.module.css"
+import { texts } from "@/config"
 
 type Props = {
   facet: SearchTermsFacet
@@ -25,7 +26,7 @@ export default function TermsFacet({ facet }: Props) {
         }}
         aria-controls={`${facet.id}-sub-menu`}
         aria-expanded={!!active}
-        aria-label={`${active ? "Collapse" : "Expand"} ${facet.name}`}
+        aria-label={texts.toggleFacet(facet.name, active)}
         type="button"
       >
         <span className={styles.title}>{facet.name}</span>
